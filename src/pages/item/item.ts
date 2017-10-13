@@ -46,7 +46,6 @@ export class ItemPage extends _DetailPage {
             this.foodSearchResult = resolveData.list.item;
         },
         (err)=>{});
-
     }
     
     // to display detailed info
