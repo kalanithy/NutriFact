@@ -5,10 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NavProxyService } from '../services/NavProxy.service';
 import { MyApp } from './app.component';
+
+import { HttpModule } from '@angular/http';
+
+
 import {
     ItemsPage,
     ItemPage,
     PlaceholderPage } from '../pages';
+import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
 @NgModule({
     declarations: [
@@ -19,6 +24,7 @@ import {
     ],
     imports: [
         BrowserModule,
+        HttpModule,
         IonicModule.forRoot(MyApp)
     ],
     bootstrap: [IonicApp],
@@ -32,7 +38,8 @@ import {
         NavProxyService,
         StatusBar,
         SplashScreen,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+    RemoteServiceProvider
     ]
 })
 export class AppModule { }

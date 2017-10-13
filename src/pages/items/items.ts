@@ -8,6 +8,8 @@ import {
     _MasterPage,
     ItemPage } from '../';
 
+import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
+
 @IonicPage()
 @Component({
     selector: 'page-items',
@@ -16,22 +18,20 @@ import {
 export class ItemsPage extends _MasterPage {
 
     items: Array<any> = [
-        { id: 0, description: 'List Item Zero' },
-        { id: 1, description: 'List Item One' },
-        { id: 2, description: 'List Item Two' },
-        { id: 3, description: 'List Item Three' },
-        { id: 4, description: 'List Item Four' },
-        { id: 5, description: 'List Item Five' },
-        { id: 6, description: 'List Item Six' },
-        { id: 7, description: 'List Item Seven' },
-        { id: 8, description: 'List Item Eight' },
-        { id: 9, description: 'List Item Nine' },
-    ];
+        { id: FUNC_ID.INTRODUCTION, title:'Introduction', description: 'About this site' },
+        { id: FUNC_ID.SEARCH_A_FOOD, title:'Food fact', description: 'Search for brief information about food' },
+        { id: FUNC_ID.SEARCH_FOOD_FACT, title:'Food report', description: 'Search for basic report of a food' },
+        { id: FUNC_ID.COMING_SOON, title:'Coming soon', description: 'Planned for next release' },
+        ];
+
+    // JSON holder for food search result from web service
+    foodSearchResult:any = {}; 
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        private navProxy: NavProxyService) {
+        private navProxy: NavProxyService,
+        public remoteService: RemoteServiceProvider) {
         super();
     }
 
@@ -40,6 +40,28 @@ export class ItemsPage extends _MasterPage {
         //     this.navCtrl.push(...)
         // Use our proxy:
         this.navProxy.pushDetail(ItemPage, item);
+        switch (item.id) {
+            case FUNC_ID.SEARCH_A_FOOD:
+                
+            break;
+            case FUNC_ID.SEARCH_FOOD_FACT:
+            break;
+            case FUNC_ID.SEARCH_A_FOOD:
+            break;
+           
+        }
     }
 
+
 }
+
+export interface IFoodDispInfo {
+
+}
+
+export enum FUNC_ID {
+    INTRODUCTION = 0,
+    SEARCH_A_FOOD = 1,
+    SEARCH_FOOD_FACT = 2,
+    COMING_SOON = 3
+}   

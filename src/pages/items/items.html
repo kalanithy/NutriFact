@@ -4,7 +4,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>
-            Items
+            NutriFact
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -13,13 +13,11 @@
     <ion-list>
         <button ion-item *ngFor="let item of items" (click)="onItemSelected(item)">
             <h2>
-                {{ item.description }}
+                {{ item.title }}
             </h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Molestiae dolor nesciunt dolore, esse excepturi nemo, atque doloribus.
-                A praesentium, doloremque, quibusdam esse, fugiat quas, obcaecati non
-                laboriosam ducimus natus vero.
+                {{ item.description }}
+                                <!-- description for phone view -->
             </p>
         </button>
     </ion-list>

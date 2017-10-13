@@ -1,10 +1,87 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{ item.description }}</ion-title>
+        <ion-title>{{ item.title }}</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, quasi earum in dolor cupiditate commodi culpa voluptates
-    optio hic architecto saepe enim corporis laborum, ipsum expedita ducimus laudantium. Fugit, sint.
+    <div [ngSwitch]=item.id>
+        <!-- Introdution page -->
+        <div *ngSwitchCase="0">
+
+            <pre>
+Search for your favourite food with this portal
+
+Stay Healthy!
+
+What is a Nutrient Report?
+    A Nutrient Report is a list of foods and their nutrient values for a set of specified nutrients.
+    
+Version Information:
+    Version: 1.0
+    Build: 001
+</pre>
+
+        </div>
+
+        <!-- Introdution page -->
+        <div *ngSwitchCase="1">
+
+            <ion-list>
+
+                <ion-item>
+                    <ion-label floating>Please enter a food name and tap Search button</ion-label>
+                    <ion-input type="text" value="" [(ngModel)]="inputSearchQuery"></ion-input>
+                </ion-item>
+
+            </ion-list>
+
+            <div padding>
+                <button (click)="searchFoodData()" primary block>Search</button>
+            </div>
+
+            <div [hidden]="showMainResultFlag">
+            <div padding> Tap on item to see more details...</div>
+            <ion-card *ngFor="let item of foodSearchResult" (click)="displayMore(item)">
+                    <p>{{item.name}}</p>
+            </ion-card>
+            </div>
+
+            <div [hidden]="showDetailResultFlag" >
+                    <div padding>
+                            <button (click)="showMainResult()" primary block>back</button>
+                        </div>
+            
+                        {{foodDetailResult}}
+            </div>
+        
+        </div>
+
+        <!-- food search page -->
+        <div *ngSwitchCase="2">
+
+            <h1>Under Construction</h1>
+
+        </div>
+
+        <!-- TODO  -->
+        <div *ngSwitchCase="3">
+            <div class="list">
+                <div class="item item-icon-left">
+                    <i class="icon ion-star"></i>
+                    Favourite food selection
+                </div>
+                <div class="item item-icon-left">
+                    <i class="icon ion-star"></i>
+                    Favourite food edit
+                </div>
+                <div class="item item-icon-left">
+                    <i class="icon ion-star"></i>
+                    Custom search
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </ion-content>
